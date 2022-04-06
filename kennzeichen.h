@@ -162,9 +162,10 @@ void schildTest(kennzeichen *schild)
 	}
 }
 
-std::string ausgabe(const kennzeichen &rKennzeichen) {
-	std::string ausgabe {};
-	return ausgabe;
+std::string ausgabe(const kennzeichen& rKennzeichen) {
+	std::string kennzeichen_ausgabe {};
+	kennzeichen_ausgabe = rKennzeichen.ort + "--" + rKennzeichen.buchstaben + "--" + rKennzeichen.zahl;
+	return kennzeichen_ausgabe;
 }
 
 } // namespace kfz
