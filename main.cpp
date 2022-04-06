@@ -7,6 +7,11 @@ void schnapszahlTest() {
 	k.buchstaben = "Nu";
 	k.zahl = 333;
 
+	kfz::kennzeichen* kptr;
+	kptr = &k;
+
+	std::cout << "Ergbenis, des Schnapszahltest" << kfz::istSchnapszahl(kptr) << std::endl;
+
 }
 void einlesenTest() { /* IHR CODE */ }
 void datenbankTest() { /* IHR CODE */ }
