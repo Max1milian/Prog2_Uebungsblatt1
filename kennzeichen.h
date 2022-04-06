@@ -18,14 +18,14 @@ std::string einlesenOrt()
 {
     char Ort[10]; // C++11 Initialisierung von Variablen
     std::cout << "bitte geben sie ihren Ort ein. Achtung nur maximal drei Buchstaben: ";
-    scanf("%s", Ort);
+    std::cin >> Ort;
 
-    if ((sizeof Ort / sizeof Ort[0]) > 3)
+    if ((sizeof Ort / sizeof Ort[0]) <= 3)
     { // da char[] kein .length() unterstüzt müssen wir die länge über
       // sizeof errechenen.
         std::cout << "Fehler! Eingabe überschreitet Stringlänge." << std::endl;
         einlesenOrt(); // rekursion, damit der Nutzer im Fehlerfall erneut
-                       // aufgefordert wird seine Daten einzugeben.
+                       // aufgefordert wird seine Daten erneut einzugeben.
     }
 
     return Ort;
@@ -71,7 +71,7 @@ unsigned short einlesenZahl()
 
 kennzeichen *einlesen()
 {
-    kennzeichen *h_kennzeichen = new kennzeichen;     // erzeugt die variable auf dem heap. deswegen die
+    kennzeichen* h_kennzeichen = new kennzeichen;     // erzeugt die variable auf dem heap. deswegen die
                                                       // Kennzeichnung mit h_
     h_kennzeichen->buchstaben = einlesenBuchstaben(); // das -> Zeichen ist das resultat von ccls. nicht
                                                       // von mir
@@ -85,8 +85,8 @@ bool istSchnapszahl(const kennzeichen *pKennzeichen)
     /*die Logik hinter diesem Statement ist, dass wenn die Zahl kleiner ist als
      * 9999 muss die Zahl noch entweder durch 11, 111 oder 1111 teilbar sein um
      * eine schnapszahl zu sein*/
-    if (pKennzeichen->zahl <= 9999 && /*<-- Und Verknüpfung*/
-        (pKennzeichen->zahl % 11 == 0 || pKennzeichen->zahl % 111 == 0 || /*<-- Oder Verknüpfung*/ pKennzeichen->zahl % 1111 == 0))
+    if (pKennzeichen->zahl <= 9999 &&
+        (pKennzeichen->zahl % 11 == 0 || pKennzeichen->zahl % 111 == 0 || pKennzeichen->zahl % 1111 == 0))
     {
         std::cout << "die Zahl ist einen schapszahl" << std::endl;
         return true;
@@ -162,8 +162,8 @@ void schildTest(kennzeichen *schild)
 	}
 }
 
-std::string ausgabe(const kennzeichen& rKennzeichen) {
-	std::string kennzeichen_ausgabe = rKennzeichen.ort + "--" + rKennzeichen.buchstaben + "--" + std::to_string(rKennzeichen.zahl);
+std::string ausgabe(const kennzeichen *rKennzeichen) {
+	std::string kennzeichen_ausgabe = rKennzeichen->ort + "--" + rKennzeichen->buchstaben + "--" + std::to_string(rKennzeichen->zahl);
 	return kennzeichen_ausgabe;
 }
 
