@@ -25,11 +25,10 @@ void einlesenTest() {
 }
 void datenbankTest() {
   db::datenbank DB {};
-  DB.name = "Augsburg";
-  std::cout << "DB Eintraege: " << DB.eintraege << "\n" << "DB Name: " << DB.name << "\n" << "DB Schilder: " << DB.schilder << std::endl;
 }
-int main() { 
-  datenbankTest();
+
+int main() {
+  
   return 0; 
   }
 

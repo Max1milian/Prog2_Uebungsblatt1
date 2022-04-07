@@ -26,12 +26,9 @@ bool einfuegen(datenbank *db, kfz::kennzeichen *schild) {
 }
 std::string ausgabe(const datenbank &db) {
   std::string repraesentation {}; 
-  /*repraesentation += "Name der Datenbank: " + db.name + "\n";
+  repraesentation += "Name der Datenbank: " + db.name + "\n";
   repraesentation += "------------------------------\n";
-  for (int i = 0; i <= db.eintraege; i++)
-  {
-    repraesentation += db.schilder[i] + "\n";
-  }*/
+  repraesentation;
   return repraesentation;
 }
 } // namespace db
