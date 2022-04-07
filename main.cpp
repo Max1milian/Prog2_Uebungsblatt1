@@ -24,11 +24,16 @@ void einlesenTest() {
   kfz::schildTest(kennzeichen_zeiger);
 }
 void datenbankTest() {
-  db::datenbank DB {};
+  db::datenbank testDatenbank;
+  testDatenbank.name = "Datenbank Test";
+  db::einfuegen(&testDatenbank, kfz::einlesen());
+  db::einfuegen(&testDatenbank, kfz::einlesen());
+  std::cout << std::endl << db::ausgabe(&testDatenbank) << std::endl;
 }
 
-int main() {
-  
-  return 0; 
-  }
-
+int main() { 
+	schnapszahlTest();
+	datenbankTest();
+	einlesenTest();
+	return 0; 
+}
