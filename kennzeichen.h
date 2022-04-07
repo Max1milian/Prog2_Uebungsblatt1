@@ -4,8 +4,7 @@
 #include <string>
 /* IHR CODE */
 namespace kfz {
-struct kennzeichen
-{
+struct kennzeichen {
   std::string ort;
   std::string buchstaben;
   short zahl;
@@ -13,12 +12,10 @@ struct kennzeichen
 
 typedef struct kennzeichen kennzeichen;
 
-std::string
-einlesenOrt()
-{
+std::string einlesenOrt() {
   char Ort[10];
   std::cout
-    << "bitte geben sie ihren Ort ein. Achtung nur maximal drei Buchstaben: ";
+      << "bitte geben sie ihren Ort ein. Achtung nur maximal drei Buchstaben: ";
   std::cin >> Ort;
 
   if ((sizeof Ort / sizeof Ort[0]) <=
@@ -32,9 +29,7 @@ einlesenOrt()
   return Ort;
 }
 
-std::string
-einlesenBuchstaben()
-{
+std::string einlesenBuchstaben() {
   std::string buchstaben{};
   std::cout << "Bitte geben sie die Abkürzung ihres Kennzeichens ein. Achtung, "
                "es werden nur maximal zwei Buchstaben "
@@ -53,9 +48,7 @@ einlesenBuchstaben()
   return buchstaben;
 }
 
-unsigned short
-einlesenZahl()
-{
+unsigned short einlesenZahl() {
   unsigned short zahl{}; // wir benutzen unsigned da wir lediglich mit
                          // positiven zahlen hantieren werden und somit der
                          // negative Bereich weggelassen werden kann.
@@ -70,12 +63,10 @@ einlesenZahl()
   return zahl;
 }
 
-kennzeichen*
-einlesen()
-{
-  kennzeichen* h_kennzeichen =
-    new kennzeichen; // erzeugt die variable auf dem heap. deswegen die
-                     // Kennzeichnung mit h_
+kennzeichen *einlesen() {
+  kennzeichen *h_kennzeichen =
+      new kennzeichen; // erzeugt die variable auf dem heap. deswegen die
+                       // Kennzeichnung mit h_
   h_kennzeichen->buchstaben = einlesenBuchstaben();
 
   h_kennzeichen->ort = einlesenOrt();
@@ -83,9 +74,7 @@ einlesen()
   return h_kennzeichen;
 }
 
-bool
-istSchnapszahl(const kennzeichen* pKennzeichen)
-{
+bool istSchnapszahl(const kennzeichen *pKennzeichen) {
   /*die Logik hinter diesem Statement ist, dass wenn die Zahl kleiner ist als
    * 9999 muss die Zahl noch entweder durch 11, 111 oder 1111 teilbar sein um
    * eine schnapszahl zu sein*/
@@ -102,9 +91,7 @@ istSchnapszahl(const kennzeichen* pKennzeichen)
   }
 }
 
-bool
-istZehner(const kennzeichen* pKennzeichen)
-{
+bool istZehner(const kennzeichen *pKennzeichen) {
   if (pKennzeichen->zahl < 100 && pKennzeichen->zahl % 10 == 0) {
     std::cout << "Die Zahl " << pKennzeichen->zahl << " ist eine Zehnerzahl"
               << std::endl;
@@ -116,9 +103,7 @@ istZehner(const kennzeichen* pKennzeichen)
   }
 }
 
-bool
-istHunderter(const kennzeichen* rKennzeichen)
-{
+bool istHunderter(const kennzeichen *rKennzeichen) {
   // ist die Zahl kleiner als 1000 und bei einer teilung mit 100 kein rest
   // rauskommen soll. Diese schreibweise hat den Vorteil, dass wir uns if
   // statements sparen und der Code deutlich lesbarer wird.
@@ -133,9 +118,7 @@ istHunderter(const kennzeichen* rKennzeichen)
   }
 }
 
-bool
-istTausender(const kennzeichen* pKennzeichen)
-{
+bool istTausender(const kennzeichen *pKennzeichen) {
   if (pKennzeichen->zahl < 10000 && pKennzeichen->zahl % 1000 == 0) {
     std::cout << "Die Zahl " << pKennzeichen->zahl
               << " ist eine Tausenderzahl! " << std::endl;
@@ -147,9 +130,7 @@ istTausender(const kennzeichen* pKennzeichen)
   }
 }
 
-void
-schildTest(kennzeichen* schild)
-{
+void schildTest(kennzeichen *schild) {
   if (istSchnapszahl(schild)) {
     std::cout << "Eine Schnapszahl! Gute Wahl!" << std::endl;
   }
@@ -165,12 +146,12 @@ schildTest(kennzeichen* schild)
   }
 }
 
-std::string
-ausgabe(const kennzeichen* rKennzeichen)
-{
-  std::string kennzeichen_ausgabe = rKennzeichen->ort + "--" +
-                                    rKennzeichen->buchstaben + "--" +
-                                    std::to_string(rKennzeichen->zahl); //hier müssen wir eine konvertierung vornehmen, da string kein short unterstützt
+std::string ausgabe(const kennzeichen *rKennzeichen) {
+  std::string kennzeichen_ausgabe =
+      rKennzeichen->ort + "--" + rKennzeichen->buchstaben + "--" +
+      std::to_string(
+          rKennzeichen->zahl); // hier müssen wir eine konvertierung vornehmen,
+                               // da string kein short unterstützt
   return kennzeichen_ausgabe;
 }
 
